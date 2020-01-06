@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyPosts</string>
+    <string name="post_detail">Detalhes Post</string>
+    <string name="home">Home</string>
+    <string name="profile">Perfil</string>
+    <string name="open">Abrir</string>
+    <string name="close">Fechar</string>
+</resources>
