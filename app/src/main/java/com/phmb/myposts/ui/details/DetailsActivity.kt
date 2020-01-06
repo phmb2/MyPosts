@@ -1,6 +1,7 @@
 package com.phmb.myposts.ui.details
 
 import android.os.Bundle
+import android.util.Log
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModel
@@ -33,11 +34,11 @@ class DetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, factory).get(DetailsViewModel::class.java)
 
         viewModel.fetchPostById().observe(this, object : Observer<Post> {
-            override fun onChanged(t: Post?) {
-                postTitle.text = t?.title
-                description.text = t?.body
+            override fun onChanged(post: Post?) {
+                Log.d("DetailsActivity", post?.title.toString())
+                titlePost.text = post?.title
+                descriptionPost.text = post?.body
             }
-
         })
     }
 
@@ -50,6 +51,6 @@ class DetailsActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         finish()
-        return  true;
+        return true
     }
 }

@@ -43,13 +43,11 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         viewModel.fetchAllData().observe(this, object: Observer<List<Post>> {
-            override fun onChanged(t: List<Post>?) {
-                Log.v("users","users=="+t)
-                adapter.addItems(t)
+            override fun onChanged(listPost: List<Post>?) {
+                Log.v("users","users==" + listPost)
+                adapter.addItems(listPost)
             }
-
         })
-
     }
 
 }

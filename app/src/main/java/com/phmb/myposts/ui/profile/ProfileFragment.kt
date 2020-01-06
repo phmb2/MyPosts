@@ -28,31 +28,25 @@ class ProfileFragment : Fragment() {
     private lateinit var viewModel: ProfileViewModel
     lateinit var data: User
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.profile_fragment, container, false)
     }
-
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
-
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
 
         viewModel.fetchUser().observe(this, object : Observer<User> {
-            override fun onChanged(t: User?) {
-                Log.v("users", "users==" + t)
-                setDataOnUI(t)
+            override fun onChanged(user: User?) {
+                Log.v("users", "users==" + user)
+                setDataOnUI(user)
             }
-
         })
 
     }
 
     private fun setDataOnUI(user: User?) {
-
         user?.let {
             name.text = it.name
             email.text = it.email
@@ -60,6 +54,5 @@ class ProfileFragment : Fragment() {
             address.text = it.address.suite + ", " + it.address.street+ ", " +
                     it.address.city+ " - " + it.address.zipcode
         }
-
     }
 }

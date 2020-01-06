@@ -1,6 +1,7 @@
 package com.phmb.myposts.adapter
 
 import android.content.Context
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
