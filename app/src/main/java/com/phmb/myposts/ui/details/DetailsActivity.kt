@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.phmb.myposts.R
 import com.phmb.myposts.model.Post
-
 import kotlinx.android.synthetic.main.activity_details.*
 
 class DetailsActivity : AppCompatActivity() {
@@ -42,9 +41,9 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     @Suppress("UNCHECKED_CAST")
-    class CustomViewModelFactory(private val test: Int) : ViewModelProvider.NewInstanceFactory() {
+    class CustomViewModelFactory(private val id: Int) : ViewModelProvider.NewInstanceFactory() {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return DetailsViewModel(test) as T
+            return DetailsViewModel(id) as T
         }
     }
 
