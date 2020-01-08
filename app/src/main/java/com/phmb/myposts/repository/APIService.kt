@@ -30,7 +30,7 @@ class APIService {
         }
 
 
-        fun getUserList(): LiveData<List<Post>> {
+        fun getPosts(): LiveData<List<Post>> {
 
             val data = MutableLiveData<List<Post>>()
 

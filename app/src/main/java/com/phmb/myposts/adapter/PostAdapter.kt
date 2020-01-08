@@ -1,7 +1,6 @@
 package com.phmb.myposts.adapter
 
 import android.content.Context
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,7 @@ import com.phmb.myposts.model.Post
 import kotlinx.android.synthetic.main.post_item.view.title
 import kotlinx.android.synthetic.main.post_item.view.description
 
-class PostAdapter (val context: Context, var data : List<Post>?) : RecyclerView.Adapter<PostAdapter.Holder>() {
+class PostAdapter (private val context: Context, var data : List<Post>?) : RecyclerView.Adapter<PostAdapter.Holder>() {
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.bindItems(data?.get(position))
@@ -28,8 +27,8 @@ class PostAdapter (val context: Context, var data : List<Post>?) : RecyclerView.
 
     override fun getItemCount(): Int = data?.size?:0
 
-    fun addItems(t: List<Post>?) {
-        data = t
+    fun addItems(post: List<Post>?) {
+        data = post
         notifyDataSetChanged()
     }
 

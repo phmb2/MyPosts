@@ -12,9 +12,8 @@ class HomeViewModel : ViewModel() {
     var list: LiveData<List<Post>>
 
     init {
-        list =  APIService.getUserList()
+        list =  APIService.getPosts()
     }
 
     fun fetchAllData() : LiveData<List<Post>> = list
-
 }

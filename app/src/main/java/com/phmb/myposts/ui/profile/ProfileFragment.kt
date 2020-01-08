@@ -1,5 +1,6 @@
 package com.phmb.myposts.ui.profile
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
@@ -26,7 +27,6 @@ class ProfileFragment : Fragment() {
     }
 
     private lateinit var viewModel: ProfileViewModel
-    lateinit var data: User
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.profile_fragment, container, false)
@@ -37,15 +37,15 @@ class ProfileFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(ProfileViewModel::class.java)
 
-        viewModel.fetchUser().observe(this, object : Observer<User> {
-            override fun onChanged(user: User?) {
+        viewModel.fetchUser().observe(this, Observer<User> {
+            user ->
                 Log.v("users", "users==" + user)
                 setDataOnUI(user)
-            }
         })
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setDataOnUI(user: User?) {
         user?.let {
             name.text = it.name
@@ -55,4 +55,5 @@ class ProfileFragment : Fragment() {
                     it.address.city+ " - " + it.address.zipcode
         }
     }
+
 }

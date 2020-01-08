@@ -25,9 +25,9 @@ class HomeFragment : Fragment() {
     }
 
     private lateinit var viewModel: HomeViewModel
-    lateinit var adapter : PostAdapter
+    private lateinit var adapter : PostAdapter
 
-    var data: List<Post> = ArrayList()
+    private var data: List<Post> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return inflater.inflate(R.layout.home_fragment, container, false)
@@ -42,11 +42,10 @@ class HomeFragment : Fragment() {
 
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
-        viewModel.fetchAllData().observe(this, object: Observer<List<Post>> {
-            override fun onChanged(listPost: List<Post>?) {
-                Log.v("users","users==" + listPost)
+        viewModel.fetchAllData().observe(this,
+            Observer<List<Post>> { listPost ->
+                Log.v("users","users==" + listPost?.toString())
                 adapter.addItems(listPost)
-            }
         })
     }
 

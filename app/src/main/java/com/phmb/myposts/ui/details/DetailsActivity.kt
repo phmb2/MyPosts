@@ -33,13 +33,12 @@ class DetailsActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this, factory).get(DetailsViewModel::class.java)
 
-        viewModel.fetchPostById().observe(this, object : Observer<Post> {
-            override fun onChanged(post: Post?) {
+        viewModel.fetchPostById().observe(this,
+            Observer<Post> { post ->
                 Log.d("DetailsActivity", post?.title.toString())
                 titlePost.text = post?.title
                 descriptionPost.text = post?.body
-            }
-        })
+            })
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -53,4 +52,5 @@ class DetailsActivity : AppCompatActivity() {
         finish()
         return true
     }
+
 }
