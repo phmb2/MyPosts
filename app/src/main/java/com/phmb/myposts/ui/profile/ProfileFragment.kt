@@ -39,7 +39,7 @@ class ProfileFragment : Fragment() {
 
         viewModel.fetchUser().observe(this, Observer<User> {
             user ->
-                Log.v("users", "users==" + user)
+                Log.v("users", """users==$user""")
                 setDataOnUI(user)
         })
 
@@ -51,8 +51,7 @@ class ProfileFragment : Fragment() {
             name.text = it.name
             email.text = it.email
             phone.text = it.phone
-            address.text = it.address.suite + ", " + it.address.street+ ", " +
-                    it.address.city+ " - " + it.address.zipcode
+            address.text = it.address.suite + ", " + it.address.street + ", " + it.address.city + " - " + it.address.zipcode
         }
     }
 

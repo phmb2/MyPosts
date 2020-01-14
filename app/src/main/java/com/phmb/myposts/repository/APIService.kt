@@ -36,11 +36,11 @@ class APIService {
 
             apiInterface.getPosts().enqueue(object : Callback<List<Post>> {
                 override fun onResponse(call: Call<List<Post>>, response: Response<List<Post>>) {
-                    data.setValue(response.body())
+                    data.value = response.body()
                 }
 
                 override fun onFailure(call: Call<List<Post>>, t: Throwable) {
-                    data.setValue(null)
+                    data.value = null
                     t.printStackTrace()
                 }
             })
@@ -54,11 +54,11 @@ class APIService {
 
             apiInterface.getPostById(id).enqueue(object : Callback<Post> {
                 override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                    data.setValue(response.body())
+                    data.value = response.body()
                 }
 
                 override fun onFailure(call: Call<Post>, t: Throwable) {
-                    data.setValue(null)
+                    data.value = null
                     t.printStackTrace()
                 }
             })
@@ -72,11 +72,11 @@ class APIService {
 
             apiInterface.getUser().enqueue(object : Callback<User> {
                 override fun onResponse(call: Call<User>, response: Response<User>) {
-                    data.setValue(response.body())
+                    data.value = response.body()
                 }
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
-                    data.setValue(null)
+                    data.value = null
                     t.printStackTrace()
                 }
             })

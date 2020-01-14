@@ -9,11 +9,7 @@ import com.phmb.myposts.model.Post
 
 class HomeViewModel : ViewModel() {
 
-    var list: LiveData<List<Post>>
-
-    init {
-        list =  APIService.getPosts()
-    }
+    var list: LiveData<List<Post>> = APIService.getPosts()
 
     fun fetchAllData() : LiveData<List<Post>> = list
 }

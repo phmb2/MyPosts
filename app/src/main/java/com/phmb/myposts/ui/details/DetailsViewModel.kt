@@ -7,11 +7,8 @@ import com.phmb.myposts.model.Post
 import com.phmb.myposts.repository.APIService
 
 class DetailsViewModel(id: Int) : ViewModel() {
-    var post: LiveData<Post>
 
-    init {
-        post =  APIService.getPostById(id)
-    }
+    var post: LiveData<Post> = APIService.getPostById(id)
 
     fun fetchPostById() : LiveData<Post> = post
 }

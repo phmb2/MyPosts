@@ -8,11 +8,7 @@ import com.phmb.myposts.repository.APIService
 
 class ProfileViewModel : ViewModel() {
 
-    var post: LiveData<User>
-
-    init {
-        post =  APIService.getUser()
-    }
+    var post: LiveData<User> = APIService.getUser()
 
     fun fetchUser() : LiveData<User> = post
 }
